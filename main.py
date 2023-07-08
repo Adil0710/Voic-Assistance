@@ -17,7 +17,7 @@ def get_weather(city):
     print('Please Tell The Name Of The City')
     speaker.Speak('Please Tell The Name Of The City')
     city = takecommand()
-    api_key = '4bb3073c9f96fd66fe280e0a5e0bbbfe'
+    api_key = 'Enter Your OpenWeatherMap API Key Here'
     url = f'http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}'
     response = requests.get(url)
     data = json.loads(response.text)

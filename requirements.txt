@@ -50,7 +50,7 @@ python-socketio==5.8.0
 pyttsx3==2.90
 pytweening==1.0.7
 pywhatkit==5.4
-pywin32==306
+pywin32==305
 requests==2.31.0
 response==0.5.0
 scipy==1.10.1

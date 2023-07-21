@@ -1,0 +1,231 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon-32x32.png') }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon-16x16.png') }}">
+<link rel="manifest" href="{{ url_for('static', filename='site.webmanifest') }}">
+
+    <title>Virtual Voice Assistant WebApp</title>
+    <style>
+        *{
+            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
+        }
+        body {
+            background-image: url("{{ url_for('static', filename='bg5.jpg') }}");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .logo{
+            flex-basis: 50%;
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+        .menu{
+            margin-left: 25%;
+        }
+        img{
+            width: auto;
+            height: 24vh;
+            margin-top: -80px;
+            margin-left: -40px;
+            position: absolute;
+            filter: drop-shadow(5px 12px 10px #535353 );
+        }
+        .navbar {
+            position:absolute; 
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 41px;
+            text-align: left;
+            list-style: none;
+            display: flex;
+        }
+        .navbar a {
+            color: black;
+            text-decoration: none;
+            padding: 1px 16px;
+            margin: 0 20px; 
+            position: relative;
+            font-weight: 400;
+            font-size: 20px;
+            transition: 0.3s ease;
+            display: inline-block;
+            flex-basis: 50%;
+            text-align: right;
+            filter: drop-shadow(5px 12px 10px #000000 );
+            margin-top: -40px;
+        }
+        .navbar a::after{
+            content: '';
+            width: 0;
+            height: 30px;
+            background: #CA226B;
+            position: absolute;
+            left: 0;
+            bottom: -1px;
+            transition: 0.5s;
+            z-index: -1;
+            border-radius: 50px;
+            
+        }
+        .navbar a:hover{
+            transform: scale(1.1);
+            color: rgb(199, 199, 199);
+            transition: 0.4s;
+            font-weight: lighter;
+            transform: translateX(-3px) translateY(-3px);
+        }
+        .navbar a:hover::after{
+            width: 100%;
+        }
+        h1 {
+            margin-top: 100px;
+            color: #535353;
+            background-color: transparent;
+            padding-top: 5%;
+            padding-left: 8%;
+        }
+        button{
+            background: transparent;
+            text-decoration: none;
+            display: inline-block;
+            border: 2px solid #CA226B;
+            font-size: 18px;
+            transition: background 0.5s, transform 0.5s;
+            transition: 0.3s;
+            border-radius: 50px;
+            margin-left: 300px;
+            margin-top: 10px;
+            font-weight: bold;
+            width: auto;
+            height: 35px;
+            color: #464646;
+        }
+        button:hover{
+            background: #CA226B;
+            color: rgb(199, 199, 199);
+            border: 2px solid #000000;
+            transition: 0.3s;
+        }
+        .container{
+            background-color: rgba(211, 211, 211, 0.2);
+            margin-top: 40px;
+            margin-left: 160px;
+            width: 400px;
+            height: auto;
+            color: #3f3f3f;
+            text-align: center;
+            filter: drop-shadow(5px 12px 10px #444444 );
+            transition: 0.7s;
+            border-radius: 50px;
+            border: 0.5px solid #464646;
+        }
+        .container:hover{
+            filter: drop-shadow(5px 12px 10px #303030 );
+            background-color: rgba(211, 211, 211, 0.4);
+        }
+        h3{
+            font-size: 17px;
+            color: #535353;
+        }
+
+        @media only screen and (max-width: 600px){
+            body {
+            background-image: url("{{ url_for('static', filename='bg4.jpg') }}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 100vh;
+            background-position: center;
+        }
+        button{
+            margin-left: 20px;
+            margin-top: 300px;
+        }
+        h1{
+            font-size: 30px;
+        }
+        .navbar a {
+            font-size: 12px;
+            padding: 0px 1px;
+            margin: 0px 2px;
+            margin-top: -5px;
+        }
+        img{
+            height: 15vh;
+            margin-top: -45px;
+        }
+        .menu{
+            margin-left: 1%;
+        }
+        .container{
+            margin-left: 10px;
+            width: 240px;
+            font-size: 15px;
+        }
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <div class="logo">
+        <img src="{{ url_for('static', filename='logo.png') }}"alt="">
+    </div>
+    <div class="menu">
+        <a href="https://adil0710.github.io/" target="_blank">Portfolio</a>
+        <a href="#">Contact</a>
+    </div>
+</div>
+
+
+    <h1>Welcome To Virtual Voice Assistant</h1>
+    <button id="run-script" onclick="toggleScript()">Speak Now</button>
+    <div class="container"><h3>Output</h3>
+    <div id="output-container"></div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script>
+        const socket = io.connect();
+
+       
+        socket.on('script_output', (data) => {
+            const outputContainer = document.getElementById('output-container');
+            outputContainer.innerText += data.output + '\n';
+            outputContainer.scrollTop = outputContainer.scrollHeight;
+        });
+
+        socket.on('script_complete', () => {
+            const button = document.getElementById('run-script');
+            button.innerText = 'Speak Now';
+        });
+
+        function toggleScript() {
+            const button = document.getElementById('run-script');
+            if (button.innerText === 'Speak Now') {
+                button.innerText = 'Stop';
+                resetOutput(); // Reset output container content
+                // Make a WebSocket request to the server to trigger the execution of main.py
+                socket.emit('run_script');
+            } else if (button.innerText === 'Stop') {
+                button.innerText = 'Stopping...';
+                // Make a WebSocket request to the server to stop the execution of main.py
+                socket.emit('stop_script');
+            }
+        }
+
+        function resetOutput() {
+            const outputContainer = document.getElementById('output-container');
+            outputContainer.innerText = ''; // Clear previous output
+        }
+    </script>
+</body>
+</html>

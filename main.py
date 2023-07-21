@@ -11,6 +11,7 @@ import time
 import response
 import json
 
+
 speaker = win32com.client.Dispatch("SAPI.SpVoice")
 
 def get_weather(city):
@@ -31,7 +32,7 @@ def get_weather(city):
         return ""
 def chat(query):
     if "what's your name".lower() in query:
-        speaker.Speak("My name is A.I. Assistant")
+        speaker.Speak("My name is Vivi")
         speaker.Speak("What's your name?")
         query = takecommand()
         if "my name" in query:
@@ -141,8 +142,8 @@ def chat(query):
             chat(query)
 
 
-    elif "what's your favourite TV show".lower() in query:
-        speaker.Speak("My favourite TV show is Chernobyl")
+    elif "what's your favourite web show".lower() in query:
+        speaker.Speak("My favourite web show is Chernobyl")
         speaker.Speak("Do you want to watch the trailer of it?")
         query = takecommand()
         if "yes" in query:
@@ -296,14 +297,14 @@ def chat(query):
 def wishme():
     hour = int(datetime.datetime.now().hour)
     if (hour >= 0) and (hour <= 12):
-        speaker.Speak("Good Morning Sir I'm Alexa")
-        print("Good Morning Sir I'm Alexa")
+        speaker.Speak("Good Morning Sir I'm Virtual Voice Assistant")
+        print("Good Morning Sir I'm Virtual Voice Assistant")
     elif (hour >= 12) and (hour <= 18):
-        speaker.Speak("Good Afternoon Sir I'm Alexa")
-        print("Good Afternoon Sir I'm Alexa")
+        speaker.Speak("Good Afternoon Sir I'm Virtual Voice Assistant")
+        print("Good Afternoon Sir I'm Virtual Voice Assistant")
     else:
-        speaker.Speak("Good Evening Sir I'm Alexa")
-        print("Good Evening Sir I'm Alexa")
+        speaker.Speak("Good Evening Sir I'm Virtual Voice Assistant")
+        print("Good Evening Sir I'm Virtual Voice Assistant")
 
     speaker.Speak("How Can I Help You?")
 

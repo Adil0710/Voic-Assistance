@@ -4,7 +4,7 @@ Virtual Voice Assistant is a Python project that creates a voice-powered assista
 
 
 
-How To Run Project :- Download the project and install all dependencies and libraries by executing command "pip install -r requirements.txt"
+How To Run:- Download the project and install all dependencies and libraries by executing command "pip install -r requirements.txt"
 
 
 

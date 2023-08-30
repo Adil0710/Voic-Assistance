@@ -1,7 +1,7 @@
 # Voice-Assistance
 Virtual Voice Assistant is a Python project that creates a voice-powered assistant. It uses speech recognition and NLP to understand user commands and responds with synthesized speech. It can perform tasks like weather updates, web searches, music playback, reminders, emails, and answering questions. Main aim to enhance hands-free voice control
 
-
+Technology Used:- Python, Flask, Javascript, HTTML, Ajax, CSS, PyCharm.
 
 
 How To Run:- Download the project and install all dependencies and libraries by executing command "pip install -r requirements.txt"

@@ -22,4 +22,4 @@ https://github.com/Adil0710/Voice-Assistance/assets/91872021/7512f479-9d36-400d-
 ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=Adil0710&show_icons=true)
 
 
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Adil0710&hide_progress=true)
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Adil0710&layout=donut-vertical)](https://github.com/Adil0710/github-readme-stats)

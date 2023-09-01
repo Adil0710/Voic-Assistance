@@ -19,7 +19,7 @@ Step 3:- You can run this project through GUI by executing command "python web.p
 https://github.com/Adil0710/Voice-Assistance/assets/91872021/7512f479-9d36-400d-9869-37d18dcb2bca
 
 
-![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=Adil0710&show_icons=true)
 
 
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Adil0710&layout=donut-vertical)](https://github.com/Adil0710/github-readme-stats)
+
+
